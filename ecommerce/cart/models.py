@@ -4,6 +4,8 @@ from django.db import models
 from django.db.models import ForeignKey
 from shop.models import product
 
+from django.http import HttpResponse
+
 
 # Create your models here.
 class cart(models.Model):
