@@ -1,0 +1,17 @@
+body
+{
+background-color:#e9f0e9!important;
+color:#040836!important;
+font-family: 'Lato', sans-serif;
+}
+
+.footer
+{
+height:40px;
+width:100%;
+background-color:white;
+position:fixed;
+bottom:0;
+left:0;
+text-align:center;
+}
