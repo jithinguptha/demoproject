@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% if user.is_authenticated %}
+<h2>Welcome {{user.first_name}} {{user.last_name}}</h2>
+{% endif %}
+<div>
+    <img src="{% static 'images/banner.jpg' %}" height="450px"  width="100%">
+</div>
+
+<div class="container-fluid mt-3" style="margin-bottom:100px;">
+    <h3 class="text-center fw-bold">Our collections</h3>
+    <p style="text-align:justify;line-height:2;">However, like any other convenience, online shopping has its drawbacks. Despite its ease and convenience, there are instances where online purchases may disappoint you. Items ordered online might not match your expectations when they are delivered. This can include differences in color, size, or other factors compared to the item you saw online. Additionally, there are fraudulent websites that offer enticing deals but turn out to be scams. Therefore, it’s essential to exercise caution and make informed choices when shopping online to avoid any potential issues later on.</p>
+</div>
+
+
+<div class="container-fluid" style="margin-bottom:100px;">
+    <div class="row">
+        {% for i in c %}
+      <div class="col-sm-4">
+          <div class="card" style="width: 20rem;">
+  <img src="{{i.image.url}}" height="225px" width="100%" class="card-img-top">
+  <div class="card-body">
+    <h5 class="card-title text-center fw-bold">{{i.name}}</h5>
+    <p class="card-text"></p>
+    <a href="{% url 'product' i.id %}" class="btn btn-outline-primary" style="position:relative;left:32%">Products</a>
+  </div>
+</div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+
+
+
+{% endblock %}

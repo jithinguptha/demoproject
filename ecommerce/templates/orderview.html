@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% for i in o %}
+<div class="container-fluid">
+    <table class="table">
+        <tr>
+            <th>Name Of Customer</th>
+            <th>{{i.user.username}}</th>
+        </tr>
+        <tr>
+            <td>Product Name</td>
+            <td>{{i.product.name}}</td>
+        </tr>
+        <tr>
+            <td>Product price</td>
+            <td>{{i.product.price}}</td>
+        </tr>
+        <tr>
+            <td>Delivery Address</td>
+            <td>{{i.address}}</td>
+        </tr>
+        <tr>
+            <td>Phone</td>
+            <td>{{i.phone}}</td>
+        </tr>
+        <tr>
+            <td>No of items</td>
+            <td>{{i.no_of_items}}</td>
+        </tr>
+        <tr>
+            <td>Ordered on</td>
+            <td>{{i.ordered_date}}</td>
+        </tr>
+        <tr>
+            <td>Delivery Status</td>
+            <td>{{i.delivery_status}}</td>
+        </tr>
+
+
+    </table>
+</div>
+{% endfor %}
+
+
+{% endblock %}

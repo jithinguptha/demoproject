@@ -1,0 +1,52 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <h3 class="text-center">Shopping Cart</h3>
+        <div class="col-8">
+            <table class="table table-bordered">
+            <tr>
+                <th colspan="5">Cart Items</th>
+            </tr>
+            {% for i in cart %}
+            <tr>
+            <td>
+                <img src="{{i.product.image.url}}" width="300px" height="150px">
+            </td>
+            <td>
+                <h5>{{i.product.name}}</h5>
+            </td>
+            <td>
+                <h6>Product Id:{{i.product.id}}</h6>
+                <h6>Unit price:{{i.product.price}}</h6>
+                <h6>Quantity:{{i.quantity}} * {{i.product.price}}</h6>
+            </td>
+            <td>
+                <h6>Subtotal:{{i.subtotal}}</h6>
+            </td>
+                <td>
+                 {% if i.product.stock > 0 %}
+                    <a href="{% url 'addcart' i.product.name %}"><i class="fa-solid fa-square-plus fs-5"></i></a>
+                    <a href="{% url 'removecart' i.product.name %}"><i class="fa-solid fa-square-minus fs-5"></i></a>
+                    <a href="{% url 'deletecart' i.product.name %}"><i class="fa-solid fa-trash fs-5"></i></a>
+            {% else %}
+                    <a href="{% url 'removecart' i.product.name %}"><i class="fa-solid fa-square-minus fs-5"></i></a>
+                    <a href="{% url 'deletecart' i.product.name %}"><i class="fa-solid fa-trash fs-5"></i></a>
+                 {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+    </table></div>
+    <div class="col-4">
+        <table class="table table-bordered">
+        <tr>
+            <th colspan="6">Checkout</th></tr>
+            <tr><td>Total:{{total}}</td></tr>
+        </table>
+        <a href="{% url 'orderform' %}" class="btn btn-primary" style="position:absolute:left:10px;">Place Order</a>
+        <a href="{% url 'category' %}" class="btn btn-primary" style="position:absolute:right:10px;">Continue Shopping</a>
+    </div>
+</div>
+</div>
+{% endblock %}
